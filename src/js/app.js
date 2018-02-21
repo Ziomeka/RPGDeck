@@ -1,3 +1,3 @@
-(function(){
-	let dupa="sexy";
+(function() {
+  let x = 0;
 })();

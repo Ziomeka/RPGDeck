@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var babel = require('gulp-babel');
+var browserSync = require('browser-sync').create();
 
 gulp.task('styles', function() {
     gulp.src('src/sass/**/*.scss')
@@ -16,8 +17,13 @@ gulp.task('babel', () =>
         .pipe(gulp.dest('dist/js'))
 );
 
+gulp.task('default', ['styles', 'babel'], function() {
 
-gulp.task('default',function() {
+    browserSync.init({
+        server: "./src"
+    });
+
     gulp.watch('src/sass/**/*.scss',['styles']);
     gulp.watch('src/js/**/*.js',['babel']);
+    gulp.watch("src/*.html").on('change', browserSync.reload);
 });

@@ -10,24 +10,24 @@ gulp.task('clean', function () {
 });
 
 gulp.task('styles', function() {
-    gulp.src('src/sass/**/*.scss')
+    return gulp.src('src/sass/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('././build/'));
 });
 
-gulp.task('babel', () =>
-    gulp.src('src/js/*.js')
+gulp.task('babel', function() {
+    return gulp.src('src/js/*.js')
         .pipe(babel({
             presets: ['env']
         }))
         .pipe(gulp.dest('build/js/'))
-);
+});
 
 gulp.task('copy', function () {
-    gulp.src('./src/*.html')
-        .pipe(gulp.dest('./build/'));
+    return Promise.all ([gulp.src('./src/*.html')
+        .pipe(gulp.dest('./build/')),
     gulp.src('./src/img/*.*')
-        .pipe(gulp.dest('./build/img/'));
+        .pipe(gulp.dest('./build/img/'))]);
 });
 
 gulp.task('build', function(callback){

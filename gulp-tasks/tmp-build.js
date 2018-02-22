@@ -19,10 +19,12 @@ gulp.task('babel', () =>
         .pipe(babel({
             presets: ['env']
         }))
-        .pipe(gulp.dest('build/js'))
+        .pipe(gulp.dest('build/js/'))
 );
 
 gulp.task('copy', function () {
     gulp.src('./src/*.html')
         .pipe(gulp.dest('./build/'));
+    gulp.src('./src/img/*.*')
+        .pipe(gulp.dest('./build/img/'));
 });

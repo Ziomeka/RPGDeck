@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var babel = require('gulp-babel');
 var clean = require('gulp-clean');
+var runSeq = require('run-sequence');
 
 gulp.task('clean', function () {
   return gulp.src('build', {read: false})
@@ -27,4 +28,8 @@ gulp.task('copy', function () {
         .pipe(gulp.dest('./build/'));
     gulp.src('./src/img/*.*')
         .pipe(gulp.dest('./build/img/'));
+});
+
+gulp.task('build', function(callback){
+  return runSeq('clean', ['styles', 'copy', 'babel'],callback);
 });

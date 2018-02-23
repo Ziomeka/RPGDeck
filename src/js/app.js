@@ -1,3 +1,10 @@
+/*
+Model odpowida za trzymanie/pobranie z serwera danych decku i za wysyłanie na rządanie danych katy. Czyli to model pilnował będzie indexu, sprawdzał czy talia się nie skończyła, tasował.
+
+Widok bedzie brał dane karty i produkował odpowiednie fragmenty innerHTML
+
+Controller bedzie słuchał na buttonach w DOM, wysyłał do modelu "dawaj kartę" po czym przekazywał do widoku, masz du dane i weź się przeładuj.
+*/
 (function() {
   let deck = [{
       id: 0,
